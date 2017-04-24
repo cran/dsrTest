@@ -1,0 +1,15 @@
+0225d623eeb49752475350935c7454f3 *DESCRIPTION
+7da83f3542bcc03e993bb781e30cd9ec *NAMESPACE
+510ccdb1dba322ff355f6f1e948d050b *NEWS.md
+b01ddc726c2fb50828512c63a76be035 *R/controlFunctions.R
+010d3cbf24223d4ce2eeffe34c9591ef *R/dsrTest.R
+0235e7406c6a0b17de1c2e2038f701aa *README.md
+e19a5f7c757daa4b78201138e4b9e1ae *build/partial.rdb
+06b3dfdf553cb46d99fb3eaefa526f2f *man/asymptoticControl.Rd
+a7d75cac4b10e580852dc78b5020d9ce *man/betaControl.Rd
+08b1728ccf45fd91aa140b149b85be22 *man/dobsonControl.Rd
+8fe188e48b01a0a61a866194d53a870a *man/dsrTest-package.Rd
+9b906fac07e702cad9e5e7aea6c0fbd0 *man/dsrTest.Rd
+755fc729fd429cca9882378c1d0a9c7c *man/gammaControl.Rd
+882f0a182d6d8f14f34c361b9e365126 *tests/testthat.R
+2d2368ada11676736c6225f5b06f552e *tests/testthat/test-alternatives.R
