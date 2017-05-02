@@ -4,77 +4,98 @@
 #' \code{\link[exactci]{poisson.exact}}.
 #' @seealso \code{\link[exactci]{poisson.exact}}
 #' @return a list with values 
-#' - `midp`
-#' - `tsmethod`
+#' \item{midp}{}
+#' \item{tsmethod}{}
 #' @param midp logical, use mid-p values? Currently only permitted
 #' where `tsmethod = "central"`.
 #' @param tsmethod `character` giving two-sided method
+#' @param ... Currently ignored..
 #' @export
-dobsonControl <- function(midp = FALSE, 
-                          tsmethod = c("central","minlike","blaker")){
+dobsonControl <- function(midp = FALSE,
+                          tsmethod = c("central", "minlike", "blaker"),
+                          ...){
   tsmethod <- match.arg(tsmethod)
   list(midp = midp, tsmethod = tsmethod)
 }
 
 #' @title Control Function for Asymptotic Method Confidence Intervals
 #' 
-#' @description Speficify the transformation to apply to the distribution
+#' @description Specify the transformation to apply to the distribution
 #' of the MLE.
 #'
 #' @param trans Transformation apply to the MLE distribution. 
-#'
+#' @param ... Currently ignored.
 #' @return
 #' A list with values
-#' - `trans`
+#' \item{trans}{}
 #' @export
-asymptoticControl <- function(trans = c("none","log")){
+asymptoticControl <- function(trans = c("none", "log", "loglog", "logit"), ...){
   trans <- match.arg(trans)
   list(trans = trans)
 }
-
 
 #' @title Control Function for Gamma Method Confidence Intervals
 #' @description Provides a list of arguments to pass to 
 #' \code{\link[asht]{wspoissonTest}}.
 #' @seealso \code{\link[asht]{wspoissonTest}}
 #' @param midp logical. Use mid-p confidence distribution method? Currently
-#' only implemented where `wmtype = "max"``
-#' @param nmc Calculation method when `midp=TRUE`.
+#' only implemented where `wmtype = "max"`
+#' @param nmc Calculation method when `midp = TRUE`.
 #' @param wmtype type of modification for the Gamma confidence interval.
-#' @param unirootTolFactor tolerance factor for unirott where `midp = TRUE`
+#' @param unirootTolFactor tolerance factor for uniroot where `midp = TRUE`
 #' and `nmc = 0`.
+#' @param ... Currently ignored.
 #' @return
 #' A list of arguments to pass to \code{\link[asht]{wspoissonTest}}.
-#' If `midp = TRUE`, with values
-#' - `midp`
-#' - `nmc`
-#' - `unirootTolFactor`
 #' 
-#' If `midp = FALSE`, with values
-#' - `wmtype`
+#' If `midp = TRUE`, with values
+#' \item{midp}{}
+#' \item{nmc}{}
+#' \item{unirootTolFactor}{}
+#' 
+#' If `midp = FALSE`, with values:
+#' \item{\code{wmtype}}{}
 #' @export
-gammaControl <- function(midp = FALSE, nmc = 0,  
-                         wmtype = c("max", "mean", "minmaxavg", "tcz"), 
-                         unirootTolFactor=10^(-6)){
+gammaControl <- function(midp = FALSE, nmc = 0,
+                         wmtype = c("max", "mean", "minmaxavg", "tcz"),
+                         unirootTolFactor = 1e-06, ...){
   wmtype <- match.arg(wmtype)
-  if(midp) {
-    RVAL <- list(midp = midp, nmc = nmc, 
+  if (midp) {
+    RVAL <- list(midp = midp, nmc = nmc,
                  unirootTolFactor = unirootTolFactor)
   } else {
-      RVAL = list(wmtype = wmtype)
+      RVAL <- list(wmtype = wmtype, midp = FALSE)
     }
   RVAL
 }
 
 #' Control Function for Beta Method for Confidence Intervals
 #'
-#' @description In the future, this may provide arguments
-#' that will permit modifications to the Beta method.
+#' @description Modification to the Beta method. The options are `"none"`
+#' or the same modifications as applied to the Gamma Method 
+#' (see \code{\link{gammaControl}}) are implemented. `wmtype="none"` and
+#' `wmtype="tcz"` have been investigated by Tiwari et al (2006) and
+#' Ng et al (2008).
+#' @references 
+#' Tiwari RC, Clegg LX, & Zou Z (2006). 'Efficient interval estimation 
+#' for age-adjusted cancer rates.' 
+#' *Statistical Methods in Medical Research* **15**: 547--569. 
+#' \doi{doi:10.1177/0962280206070621}
+#' 
+#' Ng HKT, Filardo, G & Zheng G (2008). 'Confidence interval estimating 
+#' procedures for standardized incidence rates.' 
+#' *Computational Statistics and Data Analysis* **52** 3501--3516.
+#' \doi{doi:10.1016/j.csda.2007.11.004}
+#' @param wmtype `character` type of modification to the Beta Confidence
+#' Interval
+#' @param ... Currently ignored.
 #'
-#' @param ... Currently ignored
-#'
-#' @return an empty list
+#' @return a list with values
+#' \item{wmtype}{modification to Beta Confidence Interval to implement}
 #'
 #' @export
-betaControl <- function(...) list()
-  
+betaControl <- function(wmtype = c("none", "tcz", "max", "mean",
+                                   "minmaxavg"), ...) {
+  wmtype <- match.arg(wmtype)
+  list(wmtype = wmtype)
+}

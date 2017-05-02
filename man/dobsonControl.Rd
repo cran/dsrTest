@@ -4,20 +4,21 @@
 \alias{dobsonControl}
 \title{Control Function for Dobson Method Confidence Intervals}
 \usage{
-dobsonControl(midp = FALSE, tsmethod = c("central", "minlike", "blaker"))
+dobsonControl(midp = FALSE, tsmethod = c("central", "minlike", "blaker"),
+  ...)
 }
 \arguments{
 \item{midp}{logical, use mid-p values? Currently only permitted
 where \code{tsmethod = "central"}.}
 
 \item{tsmethod}{\code{character} giving two-sided method}
+
+\item{...}{Currently ignored..}
 }
 \value{
 a list with values
-\itemize{
-\item \code{midp}
-\item \code{tsmethod}
-}
+\item{midp}{}
+\item{tsmethod}{}
 }
 \description{
 Provides a list of arguments to pass to

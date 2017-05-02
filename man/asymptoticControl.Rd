@@ -4,18 +4,18 @@
 \alias{asymptoticControl}
 \title{Control Function for Asymptotic Method Confidence Intervals}
 \usage{
-asymptoticControl(trans = c("none", "log"))
+asymptoticControl(trans = c("none", "log", "loglog", "logit"), ...)
 }
 \arguments{
 \item{trans}{Transformation apply to the MLE distribution.}
+
+\item{...}{Currently ignored.}
 }
 \value{
 A list with values
-\itemize{
-\item \code{trans}
-}
+\item{trans}{}
 }
 \description{
-Speficify the transformation to apply to the distribution
+Specify the transformation to apply to the distribution
 of the MLE.
 }

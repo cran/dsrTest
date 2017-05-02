@@ -5,32 +5,31 @@
 \title{Control Function for Gamma Method Confidence Intervals}
 \usage{
 gammaControl(midp = FALSE, nmc = 0, wmtype = c("max", "mean", "minmaxavg",
-  "tcz"), unirootTolFactor = 10^(-6))
+  "tcz"), unirootTolFactor = 1e-06, ...)
 }
 \arguments{
 \item{midp}{logical. Use mid-p confidence distribution method? Currently
-only implemented where `wmtype = "max"``}
+only implemented where \code{wmtype = "max"}}
 
-\item{nmc}{Calculation method when \code{midp=TRUE}.}
+\item{nmc}{Calculation method when \code{midp = TRUE}.}
 
 \item{wmtype}{type of modification for the Gamma confidence interval.}
 
-\item{unirootTolFactor}{tolerance factor for unirott where \code{midp = TRUE}
+\item{unirootTolFactor}{tolerance factor for uniroot where \code{midp = TRUE}
 and \code{nmc = 0}.}
+
+\item{...}{Currently ignored.}
 }
 \value{
 A list of arguments to pass to \code{\link[asht]{wspoissonTest}}.
-If \code{midp = TRUE}, with values
-\itemize{
-\item \code{midp}
-\item \code{nmc}
-\item \code{unirootTolFactor}
-}
 
-If \code{midp = FALSE}, with values
-\itemize{
-\item \code{wmtype}
-}
+If \code{midp = TRUE}, with values
+\item{midp}{}
+\item{nmc}{}
+\item{unirootTolFactor}{}
+
+If \code{midp = FALSE}, with values:
+\item{\code{wmtype}}{}
 }
 \description{
 Provides a list of arguments to pass to
