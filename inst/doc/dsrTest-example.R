@@ -1,4 +1,4 @@
-## ----example-data--------------------------------------------------------
+## ----example-data-------------------------------------------------------------
 library(dsrTest)
 # the data are in `downs.mi`
 data("downs.mi", package = "dsrTest")
@@ -24,7 +24,7 @@ with(b5, dsrTest(Cases, Births, Standard, mult = 1e5, method = "beta"))
 # Approximate Bootstrap Method
 with(b5, dsrTest(Cases, Births, Standard, mult = 1e5, method = "bootstrap"))
 
-## ----summaries-----------------------------------------------------------
+## ----summaries----------------------------------------------------------------
 # A list of methods to implement
 methods_list <- list(
   gamma = list(
